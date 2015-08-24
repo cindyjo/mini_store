@@ -1,0 +1,42 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	font-family: sans-serif;
+}
+
+table, th, td, tr {
+	border: 1px solid gray;
+	padding: 5px;
+}
+table {
+	border-collapse: collapse;
+	width: 60%;
+}
+th{
+	background-color: silver;
+}
+#wrapper{
+	width: 100%;
+	height: auto;
+	padding: 30px;
+}
+#add, #order {
+	margin: 25px 0px;
+}
+#order {
+	line-height: 30px;
+}
+#name {
+	margin-left: 20px;
+}
+
+#search {
+	margin: 0px 0px 8px 612px;
+}
+
+#order_button {
+	color: white;
+	background-color: black;
+	padding: 5px;
+	margin-left: 150px;
+}

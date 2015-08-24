@@ -1,0 +1,21 @@
+<div id ="wrapper" ng-controller = "customersController as cc">
+   	<h3><u>Add a new customer</u></h3>
+	<p>{{cc.error_message}}</p>
+    <div id="add">
+        Customer Name: <input id="name" type="text" ng-model ='cc.newCustomer.name'>
+		<input type="submit" value ="Add" ng-click="cc.addCustomers(cc.newCustomer)">
+    </div>
+    <input id="search" type="text" ng-model ="filter_name" placeholder ="search name...">
+	<table>
+		<tr>
+			<th>Customer Name</th>
+			<th>Created Date</th>
+			<th>Actions</th>
+		</tr>
+		<tr ng-repeat="customer in cc.customers | filter:filter_name | orderBy: 'created_date'">
+			<td ng-bind = 'customer.name'></td>
+			<td ng-bind = "customer.created_date | date"></td>
+			<td><a href="#/customers" ng-click = 'cc.removeCustomer(customer)'>Remove</a></td>
+		</tr>
+	</table>
+</div>

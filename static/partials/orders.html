@@ -1,0 +1,42 @@
+<div id ="wrapper" ng-controller ="customersController as cc">
+	<div ng-controller = "ordersController as oc">
+		<div id="order">
+			<h3><u>Add a new order</u></h3>
+			<p>{{oc.error_message}}</p>
+			<form name ="form" novalidate class ="simple-form">
+				customer 
+				<select name = 'customer_name' ng-Model = "oc.newOrder.customer_name" required>
+					<option value = ""></option>
+					<option ng-repeat = "customer in cc.customers">{{customer.name}}</option>
+				</select><br>	
+				order
+				<select name ="qty" ng-Model = "oc.newOrder.qty" required>
+					<option value = "1">1</option>
+					<option value = "2">2</option>
+					<option value = "3">3</option>
+					<option value = "4">4</option>
+					<option value = "5">5</option>
+				</select>
+				<select name ="product" ng-Model = "oc.newOrder.product_name" required>
+					<option ng-repeat= "product in oc.products" value= "{{product.name}}">{{product.name}}</option>
+				</select><br>
+				<input id="order_button" type="submit" value="Order" ng-click="oc.addOrders(newOrder)" ng-disabled = "form.$invalid"><br>
+			</form>
+			<input id ="search" type="text" ng-model = "filter_name" placeholder="filter...">
+		</div>
+		<table>
+			<tr>
+				<th>Customer Name</th>
+				<th>Product</th>
+				<th>Quantity</th>
+				<th>Date</th>
+			</tr>
+			<tr ng-repeat="order in oc.orders | filter:filter_name | orderBy: '-created_date'">
+				<td ng-bind = 'order.customer_name'></td>
+				<td ng-bind = "order.product_name"></td>
+				<td ng-bind = "order.qty"></td>
+				<td ng-bind = "order.created_date | date"></td>
+			</tr>
+		</table>
+	</div>
+</div>
